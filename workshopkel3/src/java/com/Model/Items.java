@@ -42,29 +42,26 @@ public class Items implements Serializable {
     private int qtyBeli;
     @Basic(optional = false)
     @Column(name = "discount")
-    private int discount;
+    private double discount;
     @Basic(optional = false)
     @Column(name = "sub_total")
-    private int subTotal;
-    @JoinColumn(name = "id_detail", referencedColumnName = "id_items")
-    @ManyToOne(optional = false)
-    private Orders idDetail;
+    private double subTotal;
     @JoinColumn(name = "id_product", referencedColumnName = "id_product")
     @ManyToOne(optional = false)
     private Product idProduct;
+    @JoinColumn(name = "id_detail", referencedColumnName = "id_items")
+    @ManyToOne(optional = false)
+    private Orders idDetail;
 
     public Items() {
     }
 
-    public Items(Integer idItems) {
-        this.idItems = idItems;
-    }
-
-    public Items(Integer idItems, int qtyBeli, int discount, int subTotal) {
+    public Items(int qtyBeli, double discount, double subTotal, Product idProduct) {
         this.idItems = idItems;
         this.qtyBeli = qtyBeli;
         this.discount = discount;
         this.subTotal = subTotal;
+        this.idProduct = idProduct;
     }
 
     public Integer getIdItems() {
@@ -83,28 +80,20 @@ public class Items implements Serializable {
         this.qtyBeli = qtyBeli;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 
-    public int getSubTotal() {
+    public double getSubTotal() {
         return subTotal;
     }
 
-    public void setSubTotal(int subTotal) {
+    public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
-    }
-
-    public Orders getIdDetail() {
-        return idDetail;
-    }
-
-    public void setIdDetail(Orders idDetail) {
-        this.idDetail = idDetail;
     }
 
     public Product getIdProduct() {
@@ -113,6 +102,14 @@ public class Items implements Serializable {
 
     public void setIdProduct(Product idProduct) {
         this.idProduct = idProduct;
+    }
+
+    public Orders getIdDetail() {
+        return idDetail;
+    }
+
+    public void setIdDetail(Orders idDetail) {
+        this.idDetail = idDetail;
     }
 
     @Override
@@ -139,5 +136,5 @@ public class Items implements Serializable {
     public String toString() {
         return "com.Model.Items[ idItems=" + idItems + " ]";
     }
-    
+
 }

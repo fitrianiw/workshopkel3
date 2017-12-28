@@ -36,7 +36,7 @@ public class Product {
     
     @RequestMapping("/kategoriproduct")
     public String getProductByCategori(@PathVariable String categori, Model model){
-        com.Model.Product prodKategori = prodService.findProductByKategori(categori);
+        com.Model.Product prodKategori = (com.Model.Product) prodService.findProductByKategori(categori);
         model.addAttribute("prodKategori", prodKategori);
         return "product_kategori";
     }

@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "tbl_kategori")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Kategori.findAll", query = "SELECT k FROM Kategori k")
-    , @NamedQuery(name = "Kategori.findByIdKetegori", query = "SELECT k FROM Kategori k WHERE k.idKetegori = :idKetegori")
-    , @NamedQuery(name = "Kategori.findByKategori", query = "SELECT k FROM Kategori k WHERE k.kategori = :kategori")})
+    @NamedQuery(name = "lKategori.findAll", query = "SELECT l FROM lKategori l")
+    , @NamedQuery(name = "lKategori.findByIdKetegori", query = "SELECT l FROM lKategori l WHERE l.idKetegori = :idKetegori")
+    , @NamedQuery(name = "lKategori.findByKategori", query = "SELECT l FROM lKategori l WHERE l.kategori = :kategori")})
 public class Kategori implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -105,7 +105,7 @@ public class Kategori implements Serializable {
 
     @Override
     public String toString() {
-        return "com.Model.Kategori[ idKetegori=" + idKetegori + " ]";
+        return "com.Model.lKategori[ idKetegori=" + idKetegori + " ]";
     }
     
 }

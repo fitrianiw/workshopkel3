@@ -12,20 +12,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class ProductService implements ProductInteface{
-    
+public class ProductService implements ProductInteface {
+
     @PersistenceUnit
     private EntityManagerFactory emf;
     private EntityManager em;
 
     public ProductService() {
     }
-    
+
     /**
      * @return the emf
      */
@@ -72,27 +73,27 @@ public class ProductService implements ProductInteface{
     }
 
     @Override
-    public Product findProductByKategori(String kategori) {
-        Product productKategori = new Product();
+    public List<Product> findProductByKategori(String kategori) {
+        //Product productKategori = new Product();
         em = emf.createEntityManager();
         Query query = em.createQuery("SELECT P FROM Product P WHERE kategori =:kategori");
         query.setParameter("kategori", kategori);
-        productKategori = (Product) query.getResultList();
+        List<Product> productKategori = query.getResultList();
         return productKategori;
     }
 
     @Override
-    public Product findProductByName(String name) {
-        Product productName = new Product();
+    public List<Product> findProductByName(String name) {
+        //Product productName = new Product();
         em = emf.createEntityManager();
         Query query = em.createQuery("SELECT P FROM Product P WHERE name =:name");
         query.setParameter("name", name);
-        productName = (Product) query.getResultList();
-        return productName;        
+        List<Product> productName = query.getResultList();
+        return productName;
     }
 
     @Override
-    public void saveProduct(Product product) {        
+    public void saveProduct(Product product) {
         em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(product);
@@ -101,8 +102,20 @@ public class ProductService implements ProductInteface{
     }
 
     @Override
-    public Product findProductByKategori(String kategori, String keyword) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Product> findProductByKategori(String kategori, String keyword) {
+        em = emf.createEntityManager();
+        Query q = em.createQuery("select from Product p where p.idKategori.kategori = :kategori and UPPER(p.namaProduct) LIKE '%'||UPPER(:keyword)||'%'");
+        q.setParameter("kategori", kategori);
+        q.setParameter("keyword", keyword);
+        List<Product> prod = q.getResultList();
+        return prod;
     }
-       
+    
+   public Product findProductById(int id)
+   {
+       em = emf.createEntityManager();
+       Product pro = em.find(Product.class, id);
+       return pro;
+   }
+
 }

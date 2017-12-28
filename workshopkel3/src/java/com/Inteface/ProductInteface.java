@@ -20,7 +20,7 @@ public interface ProductInteface {
     public void saveProduct(Product product);
     public void deleteProduct(int idProduct);
     public List<Product> showAllProduct();
-    public Product findProductByKategori(String kategori, String keyword);
-    public Product findProductByName(String name);
-    public Product findProductByKategori(String kategori);
+    public List<Product> findProductByKategori(String kategori, String keyword);
+    public List<Product> findProductByName(String name);
+    public List<Product> findProductByKategori(String kategori);
 }
