@@ -83,6 +83,18 @@ public class Product implements Serializable {
         this.namaProduct = namaProduct;
     }
 
+    public Product(Integer idProduct, String deskripsi, int qty, double harga, int berat, String namaProduct, Kategori idKategori, List<Items> itemsList) {
+        this.idProduct = idProduct;
+        this.deskripsi = deskripsi;
+        this.qty = qty;
+        this.harga = harga;
+        this.berat = berat;
+        this.namaProduct = namaProduct;
+        this.idKategori = idKategori;
+        this.itemsList = itemsList;
+    }
+    
+
     public Integer getIdProduct() {
         return idProduct;
     }
