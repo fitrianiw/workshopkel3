@@ -11,8 +11,25 @@ import java.util.Map;
 
 /**
  *
- * @author Harry
+ * @author Rudy
  */
 public class CartBean {
-    Map<Integer, Items> cartlist = new HashMap<>();
+    private Map<Integer, Items> cartlist = new HashMap<>();
+
+    public CartBean() {
+    }
+
+    /**
+     * @return the cartlist
+     */
+    public Map<Integer, Items> getCartlist() {
+        return cartlist;
+    }
+
+    /**
+     * @param cartlist the cartlist to set
+     */
+    public void setCartlist(Map<Integer, Items> cartlist) {
+        this.cartlist = cartlist;
+    }
 }

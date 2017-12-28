@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -33,7 +35,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Product.findByIdProduct", query = "SELECT p FROM Product p WHERE p.idProduct = :idProduct")
     , @NamedQuery(name = "Product.findByDeskripsi", query = "SELECT p FROM Product p WHERE p.deskripsi = :deskripsi")
     , @NamedQuery(name = "Product.findByQty", query = "SELECT p FROM Product p WHERE p.qty = :qty")
-    , @NamedQuery(name = "Product.findByIdKategori", query = "SELECT p FROM Product p WHERE p.idKategori = :idKategori")
     , @NamedQuery(name = "Product.findByHarga", query = "SELECT p FROM Product p WHERE p.harga = :harga")
     , @NamedQuery(name = "Product.findByBerat", query = "SELECT p FROM Product p WHERE p.berat = :berat")
     , @NamedQuery(name = "Product.findByNamaProduct", query = "SELECT p FROM Product p WHERE p.namaProduct = :namaProduct")})
@@ -52,9 +53,6 @@ public class Product implements Serializable {
     @Column(name = "qty")
     private int qty;
     @Basic(optional = false)
-    @Column(name = "id_kategori")
-    private int idKategori;
-    @Basic(optional = false)
     @Column(name = "harga")
     private double harga;
     @Basic(optional = false)
@@ -63,6 +61,9 @@ public class Product implements Serializable {
     @Basic(optional = false)
     @Column(name = "nama_product")
     private String namaProduct;
+    @JoinColumn(name = "id_kategori", referencedColumnName = "id_ketegori")
+    @ManyToOne(optional = false)
+    private Kategori idKategori;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProduct")
     private List<Items> itemsList;
 
@@ -73,11 +74,10 @@ public class Product implements Serializable {
         this.idProduct = idProduct;
     }
 
-    public Product(Integer idProduct, String deskripsi, int qty, int idKategori, double harga, int berat, String namaProduct) {
+    public Product(Integer idProduct, String deskripsi, int qty, double harga, int berat, String namaProduct) {
         this.idProduct = idProduct;
         this.deskripsi = deskripsi;
         this.qty = qty;
-        this.idKategori = idKategori;
         this.harga = harga;
         this.berat = berat;
         this.namaProduct = namaProduct;
@@ -107,14 +107,6 @@ public class Product implements Serializable {
         this.qty = qty;
     }
 
-    public int getIdKategori() {
-        return idKategori;
-    }
-
-    public void setIdKategori(int idKategori) {
-        this.idKategori = idKategori;
-    }
-
     public double getHarga() {
         return harga;
     }
@@ -137,6 +129,14 @@ public class Product implements Serializable {
 
     public void setNamaProduct(String namaProduct) {
         this.namaProduct = namaProduct;
+    }
+
+    public Kategori getIdKategori() {
+        return idKategori;
+    }
+
+    public void setIdKategori(Kategori idKategori) {
+        this.idKategori = idKategori;
     }
 
     @XmlTransient
