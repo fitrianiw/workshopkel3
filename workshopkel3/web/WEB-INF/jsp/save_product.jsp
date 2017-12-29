@@ -21,7 +21,7 @@
                         <form:label path="nama_product">Nama Product</form:label>
                     </td>
                     <td>:</td>
-                    <td><form:input path="nama_product" required="true"></form:input></td>
+                    <td><form:input path="nama_product" required="true" placeholder="Nama Product"></form:input></td>
                 </tr>
                 <tr>
                     <td>
