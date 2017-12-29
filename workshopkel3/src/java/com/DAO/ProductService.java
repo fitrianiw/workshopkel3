@@ -67,7 +67,7 @@ public class ProductService implements ProductInteface {
     @Override
     public List<Product> showAllProduct() {
         em = emf.createEntityManager();
-        Query query = em.createQuery("SELECT P FROM Product P");
+        Query query = em.createQuery("SELECT p from Product p ");
         List<Product> product = query.getResultList();
         return product;
     }

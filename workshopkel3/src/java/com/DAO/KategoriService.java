@@ -6,6 +6,7 @@
 package com.DAO;
 
 import com.Model.Kategori;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -30,7 +31,14 @@ public class KategoriService {
         Kategori kategori = em.find(Kategori.class, Id);
         return kategori;
     }
-
+    
+    public List<Kategori> showAllKategori() {
+        em = emf.createEntityManager();
+        Query query = em.createQuery("SELECT k FROM Kategori k ");
+        @SuppressWarnings("unchecked")
+        List<Kategori> kategori = query.getResultList();
+        return kategori;
+    }
     /**
      * @return the emf
      */

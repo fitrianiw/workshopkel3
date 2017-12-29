@@ -10,25 +10,26 @@ package com.Bean;
  * @author user
  */
 public class ProductFormBean {
-    private String dekskripsi;
+    private String deskripsi;
     private int qty;
     private int id_kategori;
     private double harga;
     private int berat;
     private String nama_product;
+    private String image;
 
     /**
      * @return the dekskripsi
      */
-    public String getDekskripsi() {
-        return dekskripsi;
+    public String getDeskripsi() {
+        return deskripsi;
     }
 
     /**
-     * @param dekskripsi the dekskripsi to set
+     * @param deskripsi the dekskripsi to set
      */
-    public void setDekskripsi(String dekskripsi) {
-        this.dekskripsi = dekskripsi;
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
     }
 
     /**
@@ -50,6 +51,20 @@ public class ProductFormBean {
      */
     public int getId_kategori() {
         return id_kategori;
+    }
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
 
     /**

@@ -44,13 +44,24 @@ public class Product {
     @RequestMapping("/saveproduct")
     public String saveProduct(@ModelAttribute("productBean") ProductFormBean productBean, Model model){
         com.Model.Product prod = new com.Model.Product();
-        prod.setDeskripsi(productBean.getDekskripsi());
+        prod.setDeskripsi(productBean.getDeskripsi());
         prod.setQty(productBean.getQty());
         prod.setHarga(productBean.getHarga());
         prod.setBerat(productBean.getBerat());
         prod.setIdKategori(kat.findById(productBean.getId_kategori()));
         prod.setNamaProduct(productBean.getNama_product());
+        prod.setImage(productBean.getImage());
         model.addAttribute("data", prod);
+        prodService.saveProduct(prod);
+        model.addAttribute("kategori",kat.showAllKategori());
+        return "succsesssave";
+    }
+    
+    @RequestMapping("/tambah")
+    public String getProduct(Model model){
+        ProductFormBean productBean = new ProductFormBean();
+        model.addAttribute("productBean", productBean);
+        model.addAttribute("kategori",kat.showAllKategori());        
         return "save_product";
     }
     
