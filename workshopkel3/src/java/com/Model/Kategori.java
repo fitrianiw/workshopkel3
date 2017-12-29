@@ -6,6 +6,7 @@
 package com.Model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -18,6 +19,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -29,9 +32,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "tbl_kategori")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "lKategori.findAll", query = "SELECT l FROM lKategori l")
-    , @NamedQuery(name = "lKategori.findByIdKetegori", query = "SELECT l FROM lKategori l WHERE l.idKetegori = :idKetegori")
-    , @NamedQuery(name = "lKategori.findByKategori", query = "SELECT l FROM lKategori l WHERE l.kategori = :kategori")})
+    @NamedQuery(name = "Kategori.findAll", query = "SELECT k FROM Kategori k")
+    , @NamedQuery(name = "Kategori.findByIdKetegori", query = "SELECT k FROM Kategori k WHERE k.idKetegori = :idKetegori")
+    , @NamedQuery(name = "Kategori.findByKategori", query = "SELECT k FROM Kategori k WHERE k.kategori = :kategori")
+    , @NamedQuery(name = "Kategori.findByCreatedby", query = "SELECT k FROM Kategori k WHERE k.createdby = :createdby")
+    , @NamedQuery(name = "Kategori.findByUpdatedby", query = "SELECT k FROM Kategori k WHERE k.updatedby = :updatedby")
+    , @NamedQuery(name = "Kategori.findByCreateddate", query = "SELECT k FROM Kategori k WHERE k.createddate = :createddate")
+    , @NamedQuery(name = "Kategori.findByUpdateddate", query = "SELECT k FROM Kategori k WHERE k.updateddate = :updateddate")})
 public class Kategori implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,6 +50,20 @@ public class Kategori implements Serializable {
     @Basic(optional = false)
     @Column(name = "kategori")
     private String kategori;
+    @Basic(optional = false)
+    @Column(name = "createdby")
+    private int createdby;
+    @Basic(optional = false)
+    @Column(name = "updatedby")
+    private int updatedby;
+    @Basic(optional = false)
+    @Column(name = "createddate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createddate;
+    @Basic(optional = false)
+    @Column(name = "updateddate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateddate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idKategori")
     private List<Product> productList;
 
@@ -53,9 +74,13 @@ public class Kategori implements Serializable {
         this.idKetegori = idKetegori;
     }
 
-    public Kategori(Integer idKetegori, String kategori) {
+    public Kategori(Integer idKetegori, String kategori, int createdby, int updatedby, Date createddate, Date updateddate) {
         this.idKetegori = idKetegori;
         this.kategori = kategori;
+        this.createdby = createdby;
+        this.updatedby = updatedby;
+        this.createddate = createddate;
+        this.updateddate = updateddate;
     }
 
     public Integer getIdKetegori() {
@@ -72,6 +97,38 @@ public class Kategori implements Serializable {
 
     public void setKategori(String kategori) {
         this.kategori = kategori;
+    }
+
+    public int getCreatedby() {
+        return createdby;
+    }
+
+    public void setCreatedby(int createdby) {
+        this.createdby = createdby;
+    }
+
+    public int getUpdatedby() {
+        return updatedby;
+    }
+
+    public void setUpdatedby(int updatedby) {
+        this.updatedby = updatedby;
+    }
+
+    public Date getCreateddate() {
+        return createddate;
+    }
+
+    public void setCreateddate(Date createddate) {
+        this.createddate = createddate;
+    }
+
+    public Date getUpdateddate() {
+        return updateddate;
+    }
+
+    public void setUpdateddate(Date updateddate) {
+        this.updateddate = updateddate;
     }
 
     @XmlTransient
@@ -105,7 +162,7 @@ public class Kategori implements Serializable {
 
     @Override
     public String toString() {
-        return "com.Model.lKategori[ idKetegori=" + idKetegori + " ]";
+        return "com.Model.Kategori[ idKetegori=" + idKetegori + " ]";
     }
     
 }

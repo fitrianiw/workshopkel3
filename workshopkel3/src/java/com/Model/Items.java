@@ -6,16 +6,25 @@
 package com.Model;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,11 +38,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Items.findByIdItems", query = "SELECT i FROM Items i WHERE i.idItems = :idItems")
     , @NamedQuery(name = "Items.findByQtyBeli", query = "SELECT i FROM Items i WHERE i.qtyBeli = :qtyBeli")
     , @NamedQuery(name = "Items.findByDiscount", query = "SELECT i FROM Items i WHERE i.discount = :discount")
-    , @NamedQuery(name = "Items.findBySubTotal", query = "SELECT i FROM Items i WHERE i.subTotal = :subTotal")})
+    , @NamedQuery(name = "Items.findBySubTotal", query = "SELECT i FROM Items i WHERE i.subTotal = :subTotal")
+    , @NamedQuery(name = "Items.findByCreatedby", query = "SELECT i FROM Items i WHERE i.createdby = :createdby")
+    , @NamedQuery(name = "Items.findByUpdatedby", query = "SELECT i FROM Items i WHERE i.updatedby = :updatedby")
+    , @NamedQuery(name = "Items.findByCreateddate", query = "SELECT i FROM Items i WHERE i.createddate = :createddate")
+    , @NamedQuery(name = "Items.findByUpdateddate", query = "SELECT i FROM Items i WHERE i.updateddate = :updateddate")})
 public class Items implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_items")
     private Integer idItems;
@@ -46,22 +60,50 @@ public class Items implements Serializable {
     @Basic(optional = false)
     @Column(name = "sub_total")
     private double subTotal;
+    @Basic(optional = false)
+    @Column(name = "createdby")
+    private int createdby;
+    @Basic(optional = false)
+    @Column(name = "updatedby")
+    private int updatedby;
+    @Basic(optional = false)
+    @Column(name = "createddate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createddate;
+    @Basic(optional = false)
+    @Column(name = "updateddate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateddate;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idItems")
+    private List<Orders> ordersList;
     @JoinColumn(name = "id_product", referencedColumnName = "id_product")
     @ManyToOne(optional = false)
     private Product idProduct;
-    @JoinColumn(name = "id_detail", referencedColumnName = "id_items")
-    @ManyToOne(optional = false)
-    private Orders idDetail;
 
     public Items() {
     }
 
-    public Items(int qtyBeli, double discount, double subTotal, Product idProduct) {
+    public Items(Integer idItems) {
+        this.idItems = idItems;
+    }
+
+    public Items(Integer idItems, int qtyBeli, double discount, double subTotal, int createdby, int updatedby, Date createddate, Date updateddate) {
         this.idItems = idItems;
         this.qtyBeli = qtyBeli;
         this.discount = discount;
         this.subTotal = subTotal;
-        this.idProduct = idProduct;
+        this.createdby = createdby;
+        this.updatedby = updatedby;
+        this.createddate = createddate;
+        this.updateddate = updateddate;
+    }
+
+    public Items(int qty_beli, int i, double d, Product findProductById) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Items(int quantity, double disc, double d, Product findProductById) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Integer getIdItems() {
@@ -96,20 +138,53 @@ public class Items implements Serializable {
         this.subTotal = subTotal;
     }
 
+    public int getCreatedby() {
+        return createdby;
+    }
+
+    public void setCreatedby(int createdby) {
+        this.createdby = createdby;
+    }
+
+    public int getUpdatedby() {
+        return updatedby;
+    }
+
+    public void setUpdatedby(int updatedby) {
+        this.updatedby = updatedby;
+    }
+
+    public Date getCreateddate() {
+        return createddate;
+    }
+
+    public void setCreateddate(Date createddate) {
+        this.createddate = createddate;
+    }
+
+    public Date getUpdateddate() {
+        return updateddate;
+    }
+
+    public void setUpdateddate(Date updateddate) {
+        this.updateddate = updateddate;
+    }
+
+    @XmlTransient
+    public List<Orders> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
+    }
+
     public Product getIdProduct() {
         return idProduct;
     }
 
     public void setIdProduct(Product idProduct) {
         this.idProduct = idProduct;
-    }
-
-    public Orders getIdDetail() {
-        return idDetail;
-    }
-
-    public void setIdDetail(Orders idDetail) {
-        this.idDetail = idDetail;
     }
 
     @Override
@@ -136,5 +211,5 @@ public class Items implements Serializable {
     public String toString() {
         return "com.Model.Items[ idItems=" + idItems + " ]";
     }
-
+    
 }

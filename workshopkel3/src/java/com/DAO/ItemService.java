@@ -5,33 +5,25 @@
  */
 package com.DAO;
 
-import com.Inteface.OrderInterface;
 import com.Model.Items;
-import com.Model.Orders;
-import com.Model.Product;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author Harry
+ * @author user
  */
 @Repository
 @Transactional
-public class OrderService implements OrderInterface {
-
+public class ItemService {
+    
     @PersistenceUnit
     private EntityManagerFactory emf;
     private EntityManager em;
 
-    public OrderService() {
-    }
-    
     /**
      * @return the emf
      */
@@ -59,24 +51,18 @@ public class OrderService implements OrderInterface {
     public void setEm(EntityManager em) {
         this.em = em;
     }
-     @Override
-    public void saveOrder(Orders order) {
-    em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(order);
-        em.getTransaction().commit();
-        em.close();}
-
-    @Override
-    public List<Orders> showHistoryOrder() {
-    em = emf.createEntityManager();
-        Query query = em.createQuery("SELECT o FROM Order o");
-        List<Orders> order = query.getResultList();
-        return order;    
+    
+    public Items findItemsById(int id){
+        em=emf.createEntityManager();
+        Items items=em.find(Items.class,id);
+        return items;
     }
-
    
-    
-    
-
+    public void saveOrderDet(Items item) {
+    em=emf.createEntityManager();
+    em.getTransaction().begin();
+    em.persist(item);
+    em.getTransaction().commit();
+    em.close();
+    }
 }

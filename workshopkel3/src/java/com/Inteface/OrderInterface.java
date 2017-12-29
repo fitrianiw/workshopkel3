@@ -5,7 +5,9 @@
  */
 package com.Inteface;
 
+import com.Model.Items;
 import com.Model.Orders;
+import com.Model.Product;
 import java.util.List;
 
 /**
@@ -17,5 +19,6 @@ import java.util.List;
 //Inteface DAO
 public interface OrderInterface {
     public void saveOrder(Orders order); //method buat simpan
-    public List<Orders> showHistoryOrder(int id_user);
+    public List<Orders> showHistoryOrder();
 }
+
