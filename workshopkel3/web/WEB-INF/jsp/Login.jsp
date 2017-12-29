@@ -13,6 +13,7 @@
         <title>Login</title>
     </head>
     <body>
+        <jsp:include page="navbar.jsp"/>
     <form:form action="Login/validation" modelAttribute="loginBean" role="form" method="Post">
         <form:input path="username" class="form-control" required="true" placeholder="username"/><br/>
         <form:password path="password" class="form-control" required="true" placeholder="password"/><br/>

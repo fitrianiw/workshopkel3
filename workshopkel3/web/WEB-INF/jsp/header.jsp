@@ -17,6 +17,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- Bootstrap style --> 
+        
         <link id="callCss" rel="stylesheet" href="<c:url value="/resourcess/themes/bootshop/bootstrap.min.css"/>" media="screen"/>
         <link href="<c:url value="/resourcess/themes/css/base.css"/>" rel="stylesheet" media="screen"/>
         <!-- Bootstrap style responsive -->	
@@ -30,6 +31,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<c:url value="/resourcess/themes/images/ico/apple-touch-icon-114-precomposed.png"/>">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<c:url value="/resourcess/themes/images/ico/apple-touch-icon-72-precomposed.png"/>">
         <link rel="apple-touch-icon-precomposed" href="<c:url value="/resourcess/themes/images/ico/apple-touch-icon-57-precomposed.png"/>">
+       
         <style type="text/css" id="enject"></style>
     </head>
     <body>

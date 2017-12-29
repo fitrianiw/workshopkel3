@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping("/welcome")
+@RequestMapping("/index")
 public class welcome{
 
+    @RequestMapping()
+    public String toString() {
+        return "index";
+    }
 }
