@@ -32,12 +32,12 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/allproduct">Product</a></li>
+        <li><a href="${pageContext.request.contextPath}/product/allproduct">Product</a></li>
         <li><a href="#">Costumer</a></li>
       </ul>
         <form class="navbar-form navbar-left" action="/action_page.php" style="margin-left:450px">
-      <div class="input-group">
-        <input type="text" class="form-control col-lg-pull-1" placeholder="Cari produk" name="search">
+            <div class="input-group" class="container" >
+                <input type="text" class="form-control col-md-10 col-lg-pull-1" style="width:-300px" placeholder="Cari produk" name="search" >
         <div class="input-group-btn">
           <button class="btn btn-default" type="submit" style="margin-left:-11px">
             <i class="glyphicon glyphicon-search"></i>
@@ -47,13 +47,10 @@
         </form>
       <ul class="nav navbar-nav navbar-right">
           <li>
-              <a href="${pageContext.request.contextPath}/order/show">
-                  Cart <span class="badge badge-success">${cart.carts.size()}</span>
-                   
-              </a>
+              <a href="#"><span class="glyphicon glyphicon-shopping-cart" badge badge-success>${cart.carts.size()}</span> </a>
           </li>
-        <li><a href="register"><span class="glyphicon glyphicon-user"></span> Daftar</a></li>
-        <li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span> Masuk</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Daftar</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Masuk</a></li>
       </ul>
     </div>
   </div>
