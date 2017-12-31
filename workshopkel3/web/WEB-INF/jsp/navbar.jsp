@@ -1,4 +1,6 @@
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
   <title>My LAZADUT Online Shop</title>
@@ -46,11 +48,18 @@
       </div>
         </form>
       <ul class="nav navbar-nav navbar-right">
+           <c:if test="${empty sessionScope.user}">
           <li>
               <a href="#"><span class="glyphicon glyphicon-shopping-cart" badge badge-success>${cart.carts.size()}</span> </a>
           </li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Daftar</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Masuk</a></li>
+        <li><a href="${pageContext.request.contextPath}/registrasi"><span class="glyphicon glyphicon-user"></span> Daftar</a></li>
+        <li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span> Masuk</a></li>
+           </c:if>
+        <c:if test="${not empty sessionScope.user}">
+                  
+                     <li><a>${user.nama}</a></li>
+                    <li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-out"> Logout</a></li>
+                    </c:if> 
       </ul>
     </div>
   </div>

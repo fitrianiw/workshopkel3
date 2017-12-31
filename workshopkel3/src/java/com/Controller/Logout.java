@@ -5,23 +5,28 @@
  */
 package com.Controller;
 
-import com.Bean.RegistrationFormBean;
+import com.Bean.CartBean;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author user
  */
-
 @Controller
-@RequestMapping("/index")
-public class welcome{
-    @RequestMapping() 
-    public String registerForm(Model model) {
+@RequestMapping("/logout")
+public class Logout {
+    @RequestMapping()
+    public String logout(HttpSession session,CartBean cb, Model model) {
+
+        if (session.getAttribute("cart") != null) {
+            cb = (CartBean) session.getAttribute("cart");
+            //cb.getCarts().clear();
+        }
+        session.removeAttribute("cart");
+        session.invalidate();
         return "index";
     }
 }
