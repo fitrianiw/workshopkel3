@@ -45,7 +45,7 @@
                         <li><a href="#">Costumer</a></li>
                     </ul>
                     <form class="navbar-form navbar-left" action="/action_page.php" style="margin-left:450px">
-                        <div class="input-group" class="container" >
+                        <div class="input-group" class="container">
                             <input type="text" class="form-control col-md-10 col-lg-pull-1" style="width:-300px" placeholder="Cari produk" name="search" >
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit" style="margin-left:-11px">

@@ -7,38 +7,44 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- Footer ================================================================== -->
-<div  id="footerSection" style="background-color: #0f0f0f">
+<footer class="text-md-left text-center p-4 bg-dark text-light">
     <div class="container">
-        <div class="row">
-            <div class="span3">
-                <h5>ACCOUNT</h5>
-                <a href="#">YOUR ACCOUNT</a>
-                <a href="#">PERSONAL INFORMATION</a>
-                <a href="#">ORDER HISTORY</a>
-            </div>
-            <div class="span3">
-                <h5>INFORMATION</h5>
-                <a href="#contact">CONTACT</a>  
-                <a href="#regist">REGISTRATION</a>
-            </div>
-            <div class="span3">
-                <h5>KATEGORI</h5> 
-                <a href="#">HANDPHONE</a>  
-                <a href="#">KAMERA</a> 
-            </div>
-            <div id="socialMedia" class="span3 pull-right">
-                <h5>SOCIAL MEDIA </h5>
-                <a href="#"><img width="60" height="60" img src="http://www.pvhc.net/img148/yqsjqvkxpaymojofcpuv.png" alt="Image"/></a>
-                <a href="#"><img width="45" height="45" img src="https://successentrepreneur.org/wp-content/uploads/2016/01/twitter-logo-png-transparent-background-310.png" title="twitter" alt="twitter"/></a>
-            </div> 
-        </div> 
-        <p class="pull-right">&copy; Kelompok 3 Workshop</p>
-    </div><!-- Container End -->
-</div>
-
-            
-            
-            
-            
-            <style>a{color: #CF0007;}</style>
+      <div class="row">
+        <div class="my-3 col-lg-4 col-md-6">
+          <h3>Lazadut Online Shop</h3>
+          <p class="my-3">
+            <a href="http://bit.ly/2CoYEtQ" target="blank" class="text-muted">Komplek Aldiron Hero Block C No.9-10, Jl. Daan Mogot Kav.119, Kebon Jeruk, RT.6/RW.5
+              <br>Jakarta, Indonesia</a>
+          </p>
+          <a class="btn btn-lg btn-primary" href="#">Register now</a>
+        </div>
+        <div class="my-3 col-lg-4 col-md-6">
+          <h3>Contact us</h3>
+          <form>
+            <fieldset class="form-group my-3">
+              <input type="email" class="form-control" id="Input Email" placeholder="Email"> </fieldset>
+            <fieldset class="form-group my-3">
+              <input type="message" class="form-control" id="Input Message" placeholder="Message"> </fieldset>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+          </form>
+        </div>
+        <div class="col-lg-1">
+          <a href="https://www.facebook.com" target="blank"></a>
+          <a href="https://www.instagram.com" target="blank"></a>
+          <a href="https://twitter.com" target="blank"></a>
+          <a href="https://plus.google.com" target="blank"></a>
+          <a href="https://pinterest.com" target="blank"></a>
+          <a href="https://www.youtube.com" target="blank"></a>
+        </div>
+        <div class="my-3 col-lg-3">
+          <h3>Follow</h3>
+          <a href="https://www.facebook.com" target="blank"><img height="50px" width="50px" src="http://icons.iconarchive.com/icons/yootheme/social-bookmark/512/social-facebook-button-blue-icon.png"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-muted">© Design by kelompok 3 </p>
+        </div>
+      </div>
+    </div>
+  </footer>

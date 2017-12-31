@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
- * @author user
+ * @author Harry
  */
 
 @Controller
-@RequestMapping("/index")
-public class welcome{
-
+@RequestMapping(value="/contact")
+public class ContactUs {
+    
     @RequestMapping()
     public String test() {
-        return "index";
+        return "ContactUs";
     }
 }
