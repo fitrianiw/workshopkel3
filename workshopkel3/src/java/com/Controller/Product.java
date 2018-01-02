@@ -27,11 +27,25 @@ public class Product {
     @Autowired
     KategoriService kat;
     
-    @RequestMapping("/allproduct")
-    public String getAllProduct(Model model){        
+    @RequestMapping("/allproductpb")
+    public String getAllProductPb(Model model){        
         List<com.Model.Product> products = prodService.showAllProduct();
-        model.addAttribute("products", products);
-        return "product";
+        model.addAttribute("productspb", products);
+        return "ProductUserPerlengkapanBayi";
+    }
+    
+    @RequestMapping("/allproductfashion")
+    public String getAllProductFashion(Model model){        
+        List<com.Model.Product> products = prodService.showAllProduct();
+        model.addAttribute("productsfashion", products);
+        return "ProductUserFashion";
+    }
+    
+    @RequestMapping("/allproductelektronik")
+    public String getAllProductElektronik(Model model){        
+        List<com.Model.Product> products = prodService.showAllProduct();
+        model.addAttribute("productselektronik", products);
+        return "ProductUserElektronik";
     }
     
     @RequestMapping("/kategoriproduct")

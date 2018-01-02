@@ -20,7 +20,7 @@
     <body>
         <div align="center">  
             <legend>
-                <h1>Registration Form</h1>
+                <h1>Login Form</h1>
             </legend>    
         </div>
         <div class="container col-sm-4" style="padding: 40px;" >

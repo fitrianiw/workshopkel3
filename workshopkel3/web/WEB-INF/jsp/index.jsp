@@ -80,14 +80,44 @@
         <h3>What We Sell</h3><br>
         <div class="row">
             <div class="col-sm-4">
-                <img src="https://s3.envato.com/files/227503983/01_Preview%203.jpg" class="img-responsive" style="width:100%" alt="Image">
-                <p>Ice Cream</p>
+                <a href="${pageContext.request.contextPath}/product/allproductfashion"><img src="http://www.insidefashion.com/assets/inside_fashion_new_logo.jpg" class="img-responsive" style="width:100%" alt="Image">
             </div>
             <div class="col-sm-4"> 
-                <img src="http://www.prodirectrunning.com/siteimages/responsive/adidas/adios-boost/desktop/Mens/top-banner.jpg" class="img-responsive" style="width:120%" alt="Image">
-                <p>Adidas</p>    
+                <a href="${pageContext.request.contextPath}/product/allproductelektronik"><img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Elektronik_Zeitschrift_logo_1990.png" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+            <div class="col-sm-4"> 
+                <li><a href="${pageContext.request.contextPath}/product/allproductpb"><img src="http://www.bebeeshoppee.com/image/data/logo.png" class="img-responsive" style="width:100%" alt="Image"></a>
             </div>
         </div>
     </div>
+            
+        <div class="py-5 section bg-faded bg-light">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12" align="center">
+          <h1 class="mb-4">Sponsors</h1>
+          <br>
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-6">
+          <img src="https://i.pinimg.com/736x/e4/3d/19/e43d193e32ed21a27159214e2d61bff3--louis-vuitton-artsy-mm-signature-logo.jpg"> </div>
+        <div class="col-md-3 col-6">
+            <img src="https://cdn2.iconfinder.com/data/icons/modern-future-technology-2/128/apple-logo-512.png" width="120px"> </div>
+        <div class="col-md-3 col-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/1024px-HP_logo_2012.svg.png" width="120px" > </div>
+        <div class="col-md-3 col-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/-huawei.png" width="350px"> </div>
+      </div>
+    </div>
+  </div>
+             
+        <br>
+        <br>
+        <br>
+        
+        <jsp:include page="footer.jsp"></jsp:include>
+       
 </body>
 </html>

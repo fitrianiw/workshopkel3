@@ -58,8 +58,8 @@
                         <li>
                             <a href="#"><span class="glyphicon glyphicon-shopping-cart" badge badge-success>${cart.carts.size()}</span> </a>
                         </li>
-                        <li><a href="${pageContext.request.contextPath}/registrasi"><span class="glyphicon glyphicon-user"></span> Daftar</a></li>
-                        <li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span> Masuk</a></li>
+                        
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                     </ul>
                 </div>
             </div>
